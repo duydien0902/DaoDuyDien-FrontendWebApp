@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Web Portal
 
-## Getting Started
+## Giới thiệu
 
-First, run the development server:
+### App quản lý nhân viên gồm các chức năng như:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Login
+- Dashboard:
+  - Hiển thị số lượng nhân sự công ty, số lượng hôm nay đi làm và nghỉ.
+  - Chart hiển thị số lượng cv, on board, active trong 6 tháng gần nhất, hiển thị phần trăm tăng giảm của tháng hiện tại so với tháng trước.
+  - Hiển thị các vai trò và số lượng trong công ty.
+- Employee:
+  - Các tabs All, Active, Inactive khi nhấn vào thì hiển thị theo người dùng lọc.
+  - Hiển thị nhân viên trên table và có thể thêm, sửa hoặc xóa.
+  - Phân trang mỗi trang sẽ hiển thị nhiều nhất 6 nhân viên.
+- Responsive: hoạt động được trên desktop, tablet, mobile
+- Các chức năng khác như là: typing, animation, hightlight active Tab, nền sáng và tối, hiển thị lỗi ở form, logout, favicon-title, hiển thị email khi người dùng đăng nhập.
+
+### Link deploy: [https://dao-duy-dien-frontend-web-app.vercel.app](https://dao-duy-dien-frontend-web-app.vercel.app)
+
+```
+Tài khoản để login:
+
+Email: test01@gmail.com
+Password: 123456
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Cài Đặt
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Yêu Cầu
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Node.js phiên bản >= 18.18.0
+- Yarn hoặc npm (công cụ quản lý gói)
 
-## Learn More
+### Cài Đặt
 
-To learn more about Next.js, take a look at the following resources:
+1. Clone dự án về máy:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```bash
+   git clone https://github.com/duydien0902/DaoDuyDien-FrontendWebApp.git
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+   cd DaoDuyDien-FrontendWebApp
+   ```
 
-## Deploy on Vercel
+2. Cài đặt các gói cần thiết:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```bash
+   yarn install
+   # hoặc nếu bạn sử dụng npm
+   npm install
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+3. Chạy dự án:
+
+   ```bash
+   yarn dev
+   # hoặc nếu bạn sử dụng npm
+   npm run dev
+   ```
+
+   Dự án sẽ chạy trên `http://localhost:3000`.
+
+## Cấu Trúc Dự Án
+
+Mô tả cấu trúc thư mục và các tệp chính trong dự án:
+
+- `src/` - Thư mục chứa code chính của dự án.
+
+  - `actions/` - Fake Api và dữ liệu khởi tạo.
+
+  - `app/` - Bao gồm những sections và các tuyến đường của ứng dụng.
+
+    - `(root)/`
+
+      - `sections/` - Những phần của trang web và các components liên quan.
+
+      - `(authentication)/` - Chứa các page liên quan đến phần authentication.
+      - `(routes)/` - Những trang chính sau khi đã login thành công
+
+  - `components/` - Các thành phần tái sử dụng lại (layout, ui ,...).
+  - `lib/` - Các thư viện, tiện ích liên quan đến dự án.
+  - `providers/` - Lớp bao bọc cả ứng dụng sử dụng providers liên quan
+  - `types/` - khai báo các data type của typescript.
+  - `utilities/` - Thư mục chứa các hàm tiện ích, các biến global
+  - `middleware.ts/` - Quản lý các tuyến đường của ứng dụng.
